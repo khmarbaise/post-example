@@ -19,9 +19,18 @@ record DataLoader() {
 
       var post1 = new Post(5L, "First Post", "First slug");
       var savePost1 = postRepository.save(post1);
+      savePost1.setTitle("First Post (R2)");
+      var savePost1R2 = postRepository.save(savePost1);
 
-      postCommentRepository.save(new PostComment(10L, "Review 1 / 1", savePost1));
-      postCommentRepository.save(new PostComment(11L, "Review 2 / 1", savePost1));
+      savePost1R2.setTitle("First Post (R3)");
+      var savePost1R3 = postRepository.save(savePost1R2);
+
+      var savedPostComment1 = postCommentRepository.save(new PostComment(10L, "Review 1 / 1", savePost1R3));
+
+      savedPostComment1.setReview("Review 1 / 1 (R2)");
+      postCommentRepository.save(savedPostComment1);
+
+      postCommentRepository.save(new PostComment(11L, "Review 2 / 1", savePost1R3));
 
       var post2 = new Post(7L, "Second Post", "Second slug");
       var savedPost2 = postRepository.save(post2);

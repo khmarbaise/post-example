@@ -54,7 +54,7 @@ class PostControllerTest {
     @Test
     void singlePost() throws Exception {
       when(postApiService.posts())
-          .thenReturn(ResponseEntity.ok(List.of(PostDTO.of(5L, "Post First", "Slug 1"))));
+          .thenReturn(ResponseEntity.ok(List.of(PostDTO.of(5L, "Post First", "Slug 1", 1L))));
 
       mockMvc.perform(get("/api/v1/posts")
           .accept(MediaType.APPLICATION_JSON_VALUE))

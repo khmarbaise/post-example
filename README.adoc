@@ -8,4 +8,6 @@ This example is based on https://vladmihalcea.com/spring-data-jpa-findbyid/
 using two entities and trying to show envers.
 
 
+https://denuwanhimangahettiarachchi.medium.com/maintain-the-data-versioning-info-with-spring-data-envers-42b6dfc19e27
+https://github.com/ishimaruk/spring-data-envers
 

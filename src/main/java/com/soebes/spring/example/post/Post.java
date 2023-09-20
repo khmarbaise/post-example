@@ -1,17 +1,21 @@
 package com.soebes.spring.example.post;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import org.hibernate.annotations.NaturalId;
+import org.hibernate.envers.Audited;
 
 @Entity
-@Table(name = "post")
+@Audited
 class Post extends AbstractEntity {
 
   private String title;
 
   @NaturalId
   private String slug;
+
+  @Version
+  private Long version;
 
   protected Post() {
   }
@@ -20,6 +24,15 @@ class Post extends AbstractEntity {
     setId(id);
     this.title = title;
     this.slug = slug;
+    this.version = 0L;
+  }
+
+  Long getVersion() {
+    return version;
+  }
+
+  void setVersion(Long version) {
+    this.version = version;
   }
 
   String getTitle() {

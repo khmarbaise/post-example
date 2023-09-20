@@ -9,7 +9,8 @@ final class PostMapper {
   static Function<Post, PostDTO> toDTO = post -> new PostDTO(
       post.getId(),
       post.getTitle(),
-      post.getSlug()
+      post.getSlug(),
+      post.getVersion()
   );
 
 

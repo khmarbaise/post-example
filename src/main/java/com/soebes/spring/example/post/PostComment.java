@@ -3,13 +3,17 @@ package com.soebes.spring.example.post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.Version;
+import org.hibernate.envers.Audited;
 
 @Entity
-@Table(name = "post_comment")
+@Audited
 class PostComment extends AbstractEntity {
 
   private String review;
+
+  @Version
+  private Long version;
 
   @ManyToOne(fetch = FetchType.LAZY)
   private Post post;
@@ -21,6 +25,15 @@ class PostComment extends AbstractEntity {
     setId(id);
     this.review = review;
     this.post = post;
+    this.version = 0L;
+  }
+
+  void setVersion(Long version) {
+    this.version = version;
+  }
+
+  Long getVersion() {
+    return version;
   }
 
   String getReview() {

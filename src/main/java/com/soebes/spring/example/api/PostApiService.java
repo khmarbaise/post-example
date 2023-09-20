@@ -2,6 +2,7 @@ package com.soebes.spring.example.api;
 
 import com.soebes.spring.example.post.PostDTO;
 import com.soebes.spring.example.post.PostService;
+import org.springframework.data.history.Revision;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,10 @@ class PostApiService {
 
   ResponseEntity<List<PostDTO>> posts() {
     return ResponseEntity.ok(postService.posts());
+  }
+
+  ResponseEntity<List<Revision<Long, PostDTO>>> revisions(Long id) {
+    var versions = postService.versions(id);
+    return ResponseEntity.ok(versions);
   }
 }
