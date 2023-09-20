@@ -30,6 +30,8 @@ management:
 
 # This property enables the openapi and swagger-ui endpoints to be exposed beneath the actuator base path.
 spring:
+  jpa:
+    open-in-view: false
   application:
     name: ThisIsTheFirst
     admin:

@@ -6,6 +6,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class PostService {
@@ -14,18 +16,22 @@ public class PostService {
 
   private final PostRepository postRepository;
 
+
   PostService(PostRepository postRepository) {
     this.postRepository = postRepository;
+  }
+
+  public List<PostDTO> posts() {
+    return postRepository.findAll().stream().map(PostMapper.toDTO).toList();
   }
 
   @EventListener
   void ready(ApplicationReadyEvent event) {
     LOG.info("ApplicationReadyEvent received. start {}", event.getTimeTaken());
     postRepository.findAll().parallelStream().forEach(
-        s -> LOG.info(" id: {} title: {} slug: {}", s.getId(), s.getTitle(), s.getSlug())
+        s -> LOG.info("Post: id: {} title: {} slug: {}", s.getId(), s.getTitle(), s.getSlug())
     );
     LOG.info("ApplicationReadyEvent received. end.");
   }
-
 
 }
