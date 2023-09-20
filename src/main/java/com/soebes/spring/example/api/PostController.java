@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
+
 @RequestMapping("/api/v1")
 @RestController
 final class PostController {
@@ -19,7 +22,7 @@ final class PostController {
     this.postApiService = postApiService;
   }
 
-  @GetMapping("/posts")
+  @GetMapping(value = "/posts", produces = {APPLICATION_XML_VALUE, APPLICATION_JSON_VALUE})
   ResponseEntity<List<PostDTO>> findAll() {
     return postApiService.posts();
   }

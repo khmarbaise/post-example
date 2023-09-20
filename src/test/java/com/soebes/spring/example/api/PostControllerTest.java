@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -32,7 +33,8 @@ class PostControllerTest {
     void checkForStatus() throws Exception {
       when(postApiService.posts()).thenReturn(ResponseEntity.ok(List.of()));
 
-      mockMvc.perform(get("/api/v1/posts"))
+      mockMvc.perform(get("/api/v1/posts")
+              .accept(MediaType.APPLICATION_JSON_VALUE))
           .andExpect(status().isOk());
     }
 
@@ -40,7 +42,8 @@ class PostControllerTest {
     void emptyContent() throws Exception {
       when(postApiService.posts()).thenReturn(ResponseEntity.ok(List.of()));
 
-      mockMvc.perform(get("/api/v1/posts"))
+      mockMvc.perform(get("/api/v1/posts")
+              .accept(MediaType.APPLICATION_JSON_VALUE))
           .andExpect(content().json("""
               [
               ]
@@ -53,7 +56,8 @@ class PostControllerTest {
       when(postApiService.posts())
           .thenReturn(ResponseEntity.ok(List.of(PostDTO.of(5L, "Post First", "Slug 1"))));
 
-      mockMvc.perform(get("/api/v1/posts"))
+      mockMvc.perform(get("/api/v1/posts")
+          .accept(MediaType.APPLICATION_JSON_VALUE))
           .andExpect(content().json("""
               [{
                 "id":5,
