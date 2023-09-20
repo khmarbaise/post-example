@@ -1,5 +1,6 @@
 package com.soebes.spring.example.api;
 
+import com.soebes.spring.example.post.PostDTO;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,22 @@ class PostControllerTest {
           .andExpect(content().json("""
               [
               ]
+              """))
+          .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    void singlePost() throws Exception {
+      when(postApiService.posts())
+          .thenReturn(ResponseEntity.ok(List.of(PostDTO.of(5L, "Post First", "Slug 1"))));
+
+      mockMvc.perform(get("/api/v1/posts"))
+          .andExpect(content().json("""
+              [{
+                "id":5,
+                "title":"Post First",
+                "slug":"Slug 1"
+              }]
               """))
           .andExpect(status().is2xxSuccessful());
     }
