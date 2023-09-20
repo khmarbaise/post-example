@@ -1,0 +1,42 @@
+server:
+  port: 9080
+  compression:
+    enabled: true
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    prometheus:
+      enabled: true
+    info:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: true
+  server:
+    port: 9081
+  info:
+    build:
+      enabled: true
+    git:
+      enabled: true
+      mode: full
+
+# This property enables the openapi and swagger-ui endpoints to be exposed beneath the actuator base path.
+spring:
+  application:
+    name: ThisIsTheFirst
+    admin:
+      enabled: true
+  main:
+    banner-mode: console
+  banner:
+    location: classpath:/banner.txt
+
+#management.endpoints.web.exposure.include=openapi, swagger-ui

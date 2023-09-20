@@ -1,0 +1,11 @@
+:quality-heads-up: https://inside.java/2023/07/29/quality-heads-up/
+:mockito-site: https://github.com/mockito/mockito
+
+= Spring Boot 3.1.X Example Project
+
+
+This example is based on https://vladmihalcea.com/spring-data-jpa-findbyid/
+using two entities and trying to show envers.
+
+
+
