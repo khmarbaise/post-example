@@ -17,23 +17,23 @@ record DataLoader() {
     return args -> {
       LOG.info("Inside Lambda started.");
 
-      var post_1 = new Post(5L, "First Post", "First slug");
-      postRepository.save(post_1);
+      var post1 = new Post(5L, "First Post", "First slug");
+      var savePost1 = postRepository.save(post1);
 
-      postCommentRepository.save(new PostComment(10L, "Review 1 / 1", post_1));
-      postCommentRepository.save(new PostComment(11L, "Review 2 / 1", post_1));
+      postCommentRepository.save(new PostComment(10L, "Review 1 / 1", savePost1));
+      postCommentRepository.save(new PostComment(11L, "Review 2 / 1", savePost1));
 
-      var post_2 = new Post(7L, "Second Post", "Second slug");
-      postRepository.save(post_2);
+      var post2 = new Post(7L, "Second Post", "Second slug");
+      var savedPost2 = postRepository.save(post2);
 
-      postCommentRepository.save(new PostComment(20L, "Review 1 / 2", post_2));
-      postCommentRepository.save(new PostComment(21L, "Review 2 / 2", post_2));
-      postCommentRepository.save(new PostComment(22L, "Review 3 / 2", post_2));
+      postCommentRepository.save(new PostComment(20L, "Review 1 / 2", savedPost2));
+      postCommentRepository.save(new PostComment(21L, "Review 2 / 2", savedPost2));
+      postCommentRepository.save(new PostComment(22L, "Review 3 / 2", savedPost2));
 
-      var post_3 = new Post(12L, "Third Post", "Third slug");
-      postRepository.save(post_3);
+      var post3 = new Post(12L, "Third Post", "Third slug");
+      var savedPost3 = postRepository.save(post3);
 
-      postCommentRepository.save(new PostComment(30L, "Review 1 / 3", post_3));
+      postCommentRepository.save(new PostComment(30L, "Review 1 / 3", savedPost3));
 
       LOG.info("loadData done.");
     };
