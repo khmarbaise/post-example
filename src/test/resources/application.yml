@@ -6,5 +6,10 @@ spring:
       allowed-origins: '*'
       allowed-headers: '*'
       allowed-methods: '*'
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: dbuser
+    password: mysecretpassword
+
 server:
   shutdown: "graceful"

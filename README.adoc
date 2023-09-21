@@ -3,14 +3,41 @@
 
 = Spring Boot 3.1.X Example Project
 
-
 This example is based on https://vladmihalcea.com/spring-data-jpa-findbyid/
 using two entities and trying to show envers.
-
+It also includes a setup for flyway database migration tool also
+uses a docker image with postgresql to have a real database running instead
+of the usual h2 embedded db.
 
 https://denuwanhimangahettiarachchi.medium.com/maintain-the-data-versioning-info-with-spring-data-envers-42b6dfc19e27
 https://github.com/ishimaruk/spring-data-envers
 
+== Build
+
+Minimum requirements are
+
+* JDK17+
+* Apache Maven 3.8+.
+
+== Initial Build
+
+[source,bash]
+----
+mvn clean verify
+----
+
+== PostgreSQL
+
+You can start the docker container using postgresql image via:
+
+[source,bash]
+----
+docker run \
+  -e POSTGRES_PASSWORD=mysecretpassword \
+  -e POSTGRES_USER=dbuser \
+  -p 5432:5432 -d  \
+  postgres:15.4
+----
 
 == Flyway Database Migration
 

@@ -4,14 +4,39 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
+import jakarta.persistence.Version;
 import org.springframework.data.util.ProxyUtils;
 
+import java.util.Objects;
+
+/**
+ * @author Oliver Gierke
+ * @author Thomas Darimont
+ * @author Mark Paluch
+ * @author Greg Turnquist
+ * @implNote A lot of code has been taken from the {@link org.springframework.data.jpa.domain.AbstractPersistable} class.
+ * The reason for that was that attributes, methods etc. defined as {@code public}. In the example
+ * project I don't want to define anything {@code public} which is not absolutely necessary.
+ * The original authors of the {@link org.springframework.data.jpa.domain.AbstractPersistable} classes are listed
+ * here as well.
+ */
 @MappedSuperclass
 abstract class AbstractEntity {
 
   @Id
   @GeneratedValue
   private Long id;
+
+  @Version
+  private Long version;
+
+  protected AbstractEntity() {
+  }
+
+  AbstractEntity(Long id, Long version) {
+    this.id = id;
+    this.version = version;
+  }
 
   Long getId() {
     return id;
@@ -27,12 +52,25 @@ abstract class AbstractEntity {
   }
 
   /**
-   * Must be {@link Transient} in order to ensure that no JPA provider complains because of a missing setter.
-   *
+   * @return the version.
    */
-  @Transient // DATAJPA-622
+  Long getVersion() {
+    return version;
+  }
+
+  /**
+   * @param version The version to be used.
+   */
+  void setVersion(Long version) {
+    this.version = version;
+  }
+
+  /**
+   * Must be {@link Transient} in order to ensure that no JPA provider complains because of a missing setter.
+   */
+  @Transient
   boolean isNew() {
-    return null == getId();
+    return Objects.isNull(getId());
   }
 
   @Override
@@ -64,4 +102,5 @@ abstract class AbstractEntity {
 
     return hashCode;
   }
+
 }
