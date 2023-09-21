@@ -2,7 +2,6 @@ server:
   port: 9080
   compression:
     enabled: true
-
 management:
   endpoints:
     enabled-by-default: true
@@ -40,5 +39,15 @@ spring:
     banner-mode: console
   banner:
     location: classpath:/banner.txt
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/
+    username: dbuser
+    password: mysecretpassword
+  flyway:
+    baseline-on-migrate: false
+    clean-disabled: true
+    create-schemas: false
+    enabled: true
 
 #management.endpoints.web.exposure.include=openapi, swagger-ui
