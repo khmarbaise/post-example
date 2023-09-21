@@ -7,7 +7,7 @@ import jakarta.persistence.Transient;
 import jakarta.persistence.Version;
 import org.springframework.data.util.ProxyUtils;
 
-import java.util.Objects;
+import static java.util.Objects.isNull;
 
 /**
  * @author Oliver Gierke
@@ -70,7 +70,7 @@ abstract class AbstractEntity {
    */
   @Transient
   boolean isNew() {
-    return Objects.isNull(getId());
+    return isNull(getId());
   }
 
   @Override
