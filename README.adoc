@@ -1,7 +1,7 @@
 :quality-heads-up: https://inside.java/2023/07/29/quality-heads-up/
 :mockito-site: https://github.com/mockito/mockito
 
-= Spring Boot 3.1.X Example Project
+= Spring Boot 3.1.X Example Project / Spring Modulith
 
 This example is based on https://vladmihalcea.com/spring-data-jpa-findbyid/
 using two entities and trying to show envers.
@@ -17,12 +17,15 @@ of the usual h2 embedded db.
 * https://github.com/odrotbohm/spring-modulith-deep-dive
 * https://github.com/odrotbohm/arch-evident-spring
 
+* https://verraes.net/2019/05/patterns-for-decoupling-distsys-passage-of-time-event/
+
 == Build
 
 Minimum requirements are
 
 * JDK17+
 * Apache Maven 3.8+.
+
 
 == Initial Build
 
