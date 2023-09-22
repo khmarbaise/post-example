@@ -9,7 +9,7 @@
   <description>Post/PostComment Demo project for Spring Boot</description>
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
-    <spring.boot.version>3.1.4</spring.boot.version>
+    <spring.boot.version>3.2.0-M3</spring.boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <postgresql.version>42.6.0</postgresql.version>
     <flyway.version>9.17.0</flyway.version>
@@ -45,7 +45,7 @@
       <dependency>
         <groupId>org.springframework.modulith</groupId>
         <artifactId>spring-modulith-bom</artifactId>
-        <version>1.0.1</version>
+        <version>1.1.0-M1</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
