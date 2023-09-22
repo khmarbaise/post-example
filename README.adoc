@@ -9,8 +9,13 @@ It also includes a setup for flyway database migration tool also
 uses a docker image with postgresql to have a real database running instead
 of the usual h2 embedded db.
 
-https://denuwanhimangahettiarachchi.medium.com/maintain-the-data-versioning-info-with-spring-data-envers-42b6dfc19e27
-https://github.com/ishimaruk/spring-data-envers
+* https://denuwanhimangahettiarachchi.medium.com/maintain-the-data-versioning-info-with-spring-data-envers-42b6dfc19e27
+* https://github.com/ishimaruk/spring-data-envers
+* https://devopedia.org/cohesion-vs-coupling
+* https://dannorth.net/cupid-for-joyful-coding/
+
+* https://github.com/odrotbohm/spring-modulith-deep-dive
+* https://github.com/odrotbohm/arch-evident-spring
 
 == Build
 
