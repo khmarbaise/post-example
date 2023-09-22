@@ -13,11 +13,8 @@ class DataLoader {
 
   @Bean
   CommandLineRunner loadData(PostRepository postRepository, PostCommentRepository postCommentRepository) {
-    LOG.info("loadData started. (before lambda)");
     return args -> {
-
-      LOG.info("loadData started. (before lambda)");
-      LOG.info("Inside Lambda started.");
+      LOG.info("loadData started.");
 
       var post1 = new Post("First Post", "First slug");
       var savePost1 = postRepository.save(post1);
