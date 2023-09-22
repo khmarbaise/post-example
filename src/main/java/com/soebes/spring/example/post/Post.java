@@ -16,8 +16,8 @@ class Post extends AbstractEntity {
   protected Post() {
   }
 
-  Post(Long id, String title, String slug) {
-    super(id, 0L);
+  Post(String title, String slug) {
+    super(0L);
     this.title = title;
     this.slug = slug;
   }

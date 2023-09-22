@@ -33,8 +33,7 @@ abstract class AbstractEntity {
   protected AbstractEntity() {
   }
 
-  AbstractEntity(Long id, Long version) {
-    this.id = id;
+  AbstractEntity(Long version) {
     this.version = version;
   }
 

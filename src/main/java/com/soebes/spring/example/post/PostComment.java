@@ -17,8 +17,8 @@ class PostComment extends AbstractEntity {
   protected PostComment() {
   }
 
-  PostComment(Long id, String review, Post post) {
-    super(id, 0L);
+  PostComment(String review, Post post) {
+    super(0L);
     this.review = review;
     this.post = post;
   }

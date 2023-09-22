@@ -31,6 +31,11 @@ management:
 spring:
   jpa:
     open-in-view: false
+#    hibernate:
+#      naming:
+#        physical-strategy: com.soebes.spring.example.MappingNames
+#      ddl-auto: validate
+    show-sql: true
   application:
     name: ThisIsTheFirst
     admin:
@@ -45,9 +50,8 @@ spring:
     username: dbuser
     password: mysecretpassword
   flyway:
-    baseline-on-migrate: false
     clean-disabled: true
-    create-schemas: false
+    create-schemas: true
     enabled: true
 
 #management.endpoints.web.exposure.include=openapi, swagger-ui
