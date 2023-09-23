@@ -1,7 +1,7 @@
 :quality-heads-up: https://inside.java/2023/07/29/quality-heads-up/
 :mockito-site: https://github.com/mockito/mockito
 
-= Spring Boot 3.1.X Example Project / Spring Modulith
+= Spring Boot 3.2.X Example Project / Spring Modulith
 
 This example is based on https://vladmihalcea.com/spring-data-jpa-findbyid/
 using two entities and trying to show envers.
@@ -34,7 +34,61 @@ Minimum requirements are
 mvn clean verify
 ----
 
-== PostgreSQL
+== Docker
+
+If you have Docker installed you can start a PostgreSQL container and let Flyway do the setup of your database
+and afterward you can run your application. This is described in the following sections.
+
+=== Oracle DB
+
+Start an Oracle XE Docker container via:
+
+[source,bash]
+----
+docker run \
+  -d \
+  -p 1521:1521 \
+  -e ORACLE_PASSWORD=mysecretpassword \
+  -e APP_USER=dbuser \
+  -e APP_USER_PASSWORD=mysecretpassword \
+  --name oracle-post-example \
+  gvenzl/oracle-xe
+----
+
+* Create Database
+[source,bash]
+----
+docker exec oracle-post-example createAppUser dbuser mysecretpassword
+----
+
+* Flyway Database Migration
++
+[source,bash]
+----
+mvn flyway:migrate@migration-oracle
+----
+
+* Execute the application
++
+[source,bash]
+----
+java -jar target/post-example.jar --spring.profiles.active=oracle
+----
+
+=== Mac Silicon
+
+If you like to run the Oracle Example you should have installed something like https://github.com/abiosoft/colima
+
+You can use https://brew.sh/ like this:
+
+[source,bash]
+----
+brew install colima
+----
+
+More details in the documentation of https://github.com/abiosoft/colima[Colima].
+
+=== PostgreSQL
 
 You can start the docker container using PostgreSQL container image via:
 
@@ -43,35 +97,41 @@ You can start the docker container using PostgreSQL container image via:
 docker run \
   -e POSTGRES_PASSWORD=mysecretpassword \
   -e POSTGRES_USER=dbuser \
-  -p 5432:5432 -d  \
+  -p 5432:5432 \
+  -d  \
   --name postgres-post-example \
   postgres:15.4
 ----
 
-== Flyway Database Migration
-
+* Flyway Database Migration
++
 [source,bash]
 ----
-mvn flyway:migrate@migration
+mvn flyway:migrate@migration-postgres
 ----
 
-== Run the Application
-
+* Execute the application
++
 [source,bash]
 ----
-java -jar target/post-example.jar
+java -jar target/post-example.jar --spring.profiles.active=postgres
 ----
 
-== Stopping Container
-
+* Stopping Container
++
 [source,bash]
 ----
 docker stop postgres-post-example
 ----
 
-== Remove the Container
-
+* Remove the Container
++
 [source,bash]
 ----
 docker rm postgres-post-example
 ----
+
+
+
+
+:colima:
