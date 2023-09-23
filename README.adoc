@@ -27,7 +27,6 @@ Minimum requirements are
 * JDK17+
 * Apache Maven 3.8+.
 
-
 == Initial Build
 
 [source,bash]
@@ -37,7 +36,7 @@ mvn clean verify
 
 == PostgreSQL
 
-You can start the docker container using postgresql image via:
+You can start the docker container using PostgreSQL container image via:
 
 [source,bash]
 ----
@@ -45,6 +44,7 @@ docker run \
   -e POSTGRES_PASSWORD=mysecretpassword \
   -e POSTGRES_USER=dbuser \
   -p 5432:5432 -d  \
+  --name postgres-post-example \
   postgres:15.4
 ----
 
@@ -55,3 +55,23 @@ docker run \
 mvn flyway:migrate@migration
 ----
 
+== Run the Application
+
+[source,bash]
+----
+java -jar target/post-example.jar
+----
+
+== Stopping Container
+
+[source,bash]
+----
+docker stop postgres-post-example
+----
+
+== Remove the Container
+
+[source,bash]
+----
+docker rm postgres-post-example
+----

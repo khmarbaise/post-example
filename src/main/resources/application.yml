@@ -33,8 +33,9 @@ spring:
     open-in-view: false
 #    hibernate:
 #      naming:
-#        physical-strategy: com.soebes.spring.example.MappingNames
-#      ddl-auto: validate
+#        implicit-strategy: com.soebes.spring.example.MappingNames
+#        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    #      ddl-auto: validate
     show-sql: true
   application:
     name: ThisIsTheFirst

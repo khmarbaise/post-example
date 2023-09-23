@@ -12,7 +12,7 @@
     <spring.boot.version>3.2.0-M3</spring.boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <postgresql.version>42.6.0</postgresql.version>
-    <flyway.version>9.17.0</flyway.version>
+    <flyway.version>9.22.2</flyway.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -371,6 +371,11 @@
             <goals>
               <goal>migrate</goal>
             </goals>
+            <!--
+             ! explicitly bound to no phase at all to use it only via cli
+             ! mvn flyway:migrate@migration
+            -->
+            <phase>none</phase>
             <configuration>
               <url>jdbc:postgresql://localhost:5432/</url>
               <user>dbuser</user>
@@ -474,6 +479,9 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <executions>
           <execution>
+            <configuration>
+              <finalName>post-example</finalName>
+            </configuration>
             <goals>
               <goal>build-info</goal>
               <goal>repackage</goal>

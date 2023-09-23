@@ -10,6 +10,10 @@ spring:
     driver-class-name: org.h2.Driver
     username: dbuser
     password: mysecretpassword
+  flyway:
+    clean-disabled: true
+    create-schemas: false
+    enabled: false
 
 server:
   shutdown: "graceful"
