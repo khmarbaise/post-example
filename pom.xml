@@ -9,7 +9,7 @@
   <description>Post/PostComment Demo project for Spring Boot</description>
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
-    <spring.boot.version>3.1.4</spring.boot.version>
+    <spring.boot.version>3.2.0-M3</spring.boot.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <flyway.version>9.22.2</flyway.version>
     <postgresql.version>42.6.0</postgresql.version>
@@ -471,9 +471,6 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <executions>
           <execution>
-            <configuration>
-              <finalName>post-example</finalName>
-            </configuration>
             <goals>
               <goal>build-info</goal>
               <goal>repackage</goal>
