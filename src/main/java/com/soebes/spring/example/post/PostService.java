@@ -32,7 +32,7 @@ public class PostService {
     var revisions = postRepository.findRevisions(id);
     return revisions.getContent().stream().map(r -> {
       LOG.info("revision: {}", r.getRevisionNumber());
-      return Revision.of(r.getMetadata(), PostMapper.toDTO.apply(r.getEntity()));
+      return Revision.of(r.getMetadata(), toDTO.apply(r.getEntity()));
     }).toList();
   }
 
